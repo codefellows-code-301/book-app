@@ -37,8 +37,10 @@ function search(request, response) {
 
 function Book(book) {
   console.log(book);
-  this.title = book.volumeInfo.title || 'This book does not have a tilte';
-  this.placeholderImage = 'https://i.imgur.com/J5LVHEL.jpeg';
+  this.title = book.volumeInfo.title || 'Title Missing';
+  this.placeholderImage = book.volumeInfo.imageLinks.thumbnail || 'https://i.imgur.com/J5LVHEL.jpeg';
+  this.author = book.volumeInfo.authors || 'Author Unknown';
+  this.description = book.volumeInfo.description || 'Description Missing';
 }
 
 app.listen( PORT, () => console.log(`APP is up on PORT:${PORT}`));
