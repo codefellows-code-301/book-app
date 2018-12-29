@@ -1,5 +1,9 @@
 # book_app
 
+/////////////////////////////////////////////////////////////////////////
+LAB 11
+////////////////////////////////////////////////////////////////////////
+
 Number and name of feature: Feature 1 - Server-Side Rendering
 
 Estimate of time needed to complete: 1 hr
@@ -54,6 +58,80 @@ Estimate of time needed to complete: 1 hr
 
 Start time: 12:35pm
 
-Finish time: _____
+Finish time: 1:30pm
 
-Actual time needed to complete: _____
+Actual time needed to complete: 65 min
+
+/////////////////////////////////////////////////////////////////////////
+LAB 12
+////////////////////////////////////////////////////////////////////////
+
+Number and name of feature: Feature 1 Show all saved books when the application loads
+
+Estimate of time needed to complete: 1 hr
+
+Start time: 
+
+Finish time: 
+
+Actual time needed to complete: 
+
+////////////////////////////////////////////////////////////////////////
+
+Number and name of feature: Feature 2 Book Detail View
+
+Estimate of time needed to complete: 1 hr
+
+Start time: 
+
+Finish time: 
+
+Actual time needed to complete: 
+
+////////////////////////////////////////////////////////////////////////
+
+Number and name of feature: Feature 3 Modifying API-provided book details
+
+Estimate of time needed to complete: 1 hr
+
+Start time: 
+
+Finish time: 
+
+Actual time needed to complete: 
+
+////////////////////////////////////////////////////////////////////////
+
+Number and name of feature: Feature 4 Saving a new book to the collection
+
+Estimate of time needed to complete: 1 hr
+
+Start time: 
+
+Finish time: 
+
+Actual time needed to complete: 
+
+////////////////////////////////////////////////////////////////////////
+
+Number and name of feature: Feature 5 Consistent rendering
+
+Estimate of time needed to complete: 1 hr
+
+Start time: 
+
+Finish time: 
+
+Actual time needed to complete: 
+
+////////////////////////////////////////////////////////////////////////
+
+Number and name of feature: Feature 6 Continue to Style the application
+
+Estimate of time needed to complete: 1 hr
+
+Start time: 
+
+Finish time: 
+
+Actual time needed to complete: 

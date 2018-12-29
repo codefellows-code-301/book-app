@@ -5,13 +5,20 @@
 const express = require('express');
 const superagent = require('superagent');
 const app = express();
+const pg = require('pg');
 const PORT = process.env.PORT || 3000;
+require('dotenv').config();
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('./public'));
 app.set('view engine', 'ejs');
 app.get('/', home);
 app.post('/searches', search);
+
+//database
+const client = new pg.Client(process.env.DATABASE_URL);
+client.connect();
+client.on('error', err => console.error(err));
 
 function home(request, response) {
   response.render('pages/index');
@@ -41,9 +48,10 @@ function search(request, response) {
 
 function Book(book) {
   console.log(book);
-  this.title = book.volumeInfo.title || 'Title Missing';
-  this.placeholderImage = book.volumeInfo.imageLinks.thumbnail || 'https://i.imgur.com/J5LVHEL.jpeg';
   this.author = book.volumeInfo.authors || 'Author Unknown';
+  this.title = book.volumeInfo.title || 'Title Missing';
+  this.isbn = book.volumeInfo.industryIdentifiers[0].type + book.volumeInfo.industryIdentifiers[0].identifier || 'ISBN Missing';
+  this.placeholderImage = book.volumeInfo.imageLinks.thumbnail || 'https://i.imgur.com/J5LVHEL.jpeg';
   this.description = book.volumeInfo.description || 'Description Missing';
 }
 
