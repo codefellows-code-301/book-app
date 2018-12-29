@@ -2,33 +2,33 @@
 
 Number and name of feature: Feature 1 - Server-Side Rendering
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 1 hr
 
-Start time: _____
+Start time: 9:45a
 
-Finish time: _____
+Finish time: 10:30a
 
-Actual time needed to complete: _____
+Actual time needed to complete: 45 min
 
 //////////////////////////////////////////////////////////////////////////
 
 Number and name of feature: Feature 2 Search the Google Books API
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 1 hr
 
-Start time: _____
+Start time: 10:30a
 
-Finish time: _____
+Finish time: 11:30a
 
-Actual time needed to complete: _____
+Actual time needed to complete: 1 hr
 
 //////////////////////////////////////////////////////////////////////////
 
 Number and name of feature: Feature 3 Display Search Results
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 1 hr
 
-Start time: _____
+Start time: 11:30a
 
 Finish time: _____
 

@@ -8,6 +8,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.urlencoded({extended: true}));
+app.use(express.static('./public'));
 app.set('view engine', 'ejs');
 app.get('/', home);
 app.post('/searches', search);
@@ -30,7 +31,7 @@ function search(request, response) {
   return superagent.get(url)
     .then( result => {
       let books = result.body.items.map(book => new Book(book));
-      response.render('pages/show', {books});
+      response.render('pages/searches/show', {books});
     })
 }
 
