@@ -4,8 +4,10 @@
   "description": "Number and name of feature: Feature 1 - Server-Side Rendering",
   "main": "server.js",
   "dependencies": {
+    "dotenv": "^6.2.0",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
+    "pg": "^7.7.1",
     "superagent": "^4.1.0"
   },
   "devDependencies": {},
