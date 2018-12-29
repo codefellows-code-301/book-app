@@ -42,17 +42,17 @@ Estimate of time needed to complete: 30 min
 
 Start time: 12:01pm
 
-Finish time: _____
+Finish time: 12:34pm
 
-Actual time needed to complete: _____
+Actual time needed to complete: 33 min
 
 //////////////////////////////////////////////////////////////////////////
 
 Number and name of feature: Feature 5 Style the Book Application
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 1 hr
 
-Start time: _____
+Start time: 12:35pm
 
 Finish time: _____
 

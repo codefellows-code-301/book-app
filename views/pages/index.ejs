@@ -12,8 +12,24 @@
         <link rel="stylesheet" type="text/css" href="styles/modules.css"/>
     </head>
     <body>
+        <nav role="navigation">
+            <div id="navTitle">
+                <h1>BOOOOOOOOKS!</h1>
+            </div>
+            <div id="menuToggle">
+                <input type="checkbox"/>
+                <span></span>
+                <span></span>
+                <span></span>
+                <ul id="menu">
+                    <a href="#"><li>Home</li></a>
+                    <a href="#"><li>Results</li></a>
+                    <a href="#"><li>Saved</li></a>
+                </ul>
+            </div>
+        </nav>
         <main>
-            <h4>Search By Title or Author</h4>
+            <h4 id="searchInfo">Search By Title or Author</h4>
             <form action="/searches" method="post">
                 <input type="text" name="search" placeholder="Enter a title or author" required>
                 <fieldset>
