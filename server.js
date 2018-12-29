@@ -33,6 +33,10 @@ function search(request, response) {
       let books = result.body.items.map(book => new Book(book));
       response.render('pages/searches/show', {books});
     })
+    .catch( err => {
+      console.log('superagent error')
+      return handleError(err, response);
+    })
 }
 
 function Book(book) {
@@ -41,6 +45,11 @@ function Book(book) {
   this.placeholderImage = book.volumeInfo.imageLinks.thumbnail || 'https://i.imgur.com/J5LVHEL.jpeg';
   this.author = book.volumeInfo.authors || 'Author Unknown';
   this.description = book.volumeInfo.description || 'Description Missing';
+}
+
+function handleError (err, response) {
+  console.error(err);
+  response.render('pages/error', err);
 }
 
 app.listen( PORT, () => console.log(`APP is up on PORT:${PORT}`));
