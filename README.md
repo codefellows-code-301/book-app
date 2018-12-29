@@ -38,9 +38,9 @@ Actual time needed to complete: 26 minutes
 
 Number and name of feature: Feature 4 Error Handling
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 30 min
 
-Start time: _____
+Start time: 12:01pm
 
 Finish time: _____
 
