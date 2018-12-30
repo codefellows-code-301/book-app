@@ -29,7 +29,18 @@
             </div>
         </nav>
         <main>
-            <h4 id="searchInfo">Search By Title or Author</h4>
+            <p <%= books.length %>Books in Collection</p>
+                <ul id="bookshelf">
+                    <% books.forEach(book => { %>
+                        <li class="new-book">
+                            <img src=<%= book.image_url %>>
+                            <h3><%= book.title %></h3>
+                            <h4><%= book.author %></h4>
+                            <p><%= book.description %></p>
+                        </li>
+                    <% }) %>
+                </ul>
+            <!-- <h4 id="searchInfo">Search By Title or Author</h4>
             <form action="/searches" method="post">
                 <input type="text" name="search" placeholder="Enter a title or author" required>
                 <fieldset>
@@ -44,7 +55,7 @@
                         <input type="radio" name="search" value="author" required>
                     </label>
                 </fieldset>
-                <button type="submit">Search the Google Books API</button>
+                <button type="submit">Search the Google Books API</button> -->
             </form>
         </main>
     </body>
