@@ -21,7 +21,20 @@ client.connect();
 client.on('error', err => console.error(err));
 
 function home(request, response) {
-  response.render('pages/index');
+  let SQL = 'SELECT * FROM books';
+  return client.query(SQL)
+    .then(result => {
+      if(result.rowCount === 0) {//If there is nothing there go search for books
+        response.render('pages/searches/new')
+      } else {
+        response.render('pages/index', {books:result.rows});//get it from the database
+        console.log({books:result.rows});
+      }
+    })
+    .catch( err => {
+      console.log('database request error')
+      return handleError(err, response);
+    })
 }
 
 function search(request, response) {
@@ -39,6 +52,7 @@ function search(request, response) {
     .then( result => {
       let books = result.body.items.map(book => new Book(book));
       response.render('pages/searches/show', {books});
+      console.log(books);
     })
     .catch( err => {
       console.log('superagent error')
@@ -51,7 +65,7 @@ function Book(book) {
   this.author = book.volumeInfo.authors || 'Author Unknown';
   this.title = book.volumeInfo.title || 'Title Missing';
   this.isbn = book.volumeInfo.industryIdentifiers[0].type + book.volumeInfo.industryIdentifiers[0].identifier || 'ISBN Missing';
-  this.placeholderImage = book.volumeInfo.imageLinks.thumbnail || 'https://i.imgur.com/J5LVHEL.jpeg';
+  this.image_url = book.volumeInfo.imageLinks.thumbnail || 'https://i.imgur.com/J5LVHEL.jpeg';
   this.description = book.volumeInfo.description || 'Description Missing';
 }
 
