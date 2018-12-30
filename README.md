@@ -70,11 +70,11 @@ Number and name of feature: Feature 1 Show all saved books when the application 
 
 Estimate of time needed to complete: 1 hr
 
-Start time: 
+Start time: 2:00pm
 
-Finish time: 
+Finish time: 6:00pm
 
-Actual time needed to complete: 
+Actual time needed to complete: 4 hours
 
 ////////////////////////////////////////////////////////////////////////
 
@@ -82,9 +82,9 @@ Number and name of feature: Feature 2 Book Detail View
 
 Estimate of time needed to complete: 1 hr
 
-Start time: 
+Start time: 6:00pm
 
-Finish time: 
+Finish time: 6:45pm (in process)
 
 Actual time needed to complete: 
 
