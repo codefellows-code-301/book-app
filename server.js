@@ -79,15 +79,18 @@ function handleError (err, response) {
 
 function visitBookDetail(request, response) {
   let SQL = 'SELECT * FROM books where id=$1';
-  console.log([request.params.id]);
+  console.log('this is the value', [request.params.id]);
   let values = [request.params.id];
   return client.query(SQL, values)
-    .then(result => response.render('pages/books/detail', {books:result.rows[0]})
-      .catch( err => {
-        console.log('database request error')
-        return handleError(err, response);
-      })
-    )
+    .then(result => {
+      console.log(result.rows[0])
+      response.render('pages/books/show', {books:result.rows[0]}
+      )
+    })
+    .catch( err => {
+      console.log('database request error')
+      return handleError(err, response);
+    })
 }
 
 
