@@ -13,6 +13,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static('./public'));
 app.set('view engine', 'ejs');
 app.get('/', home);
+app.get('/new', newSearch);
 app.post('/searches', search);
 
 app.get('/books/:id', visitBookDetail);
@@ -63,6 +64,10 @@ function search(request, response) {
     })
 }
 
+function newSearch (request, response){
+  response.render('pages/searches/new');
+}
+
 function Book(book) {
   console.log(book);
   this.author = book.volumeInfo.authors || 'Author Unknown';
@@ -84,7 +89,7 @@ function visitBookDetail(request, response) {
   return client.query(SQL, values)
     .then(result => {
       console.log(result.rows[0])
-      response.render('pages/books/show', {books:result.rows[0]}
+      response.render('pages/books/show', {selected_book:result.rows[0]}
       )
     })
     .catch( err => {
