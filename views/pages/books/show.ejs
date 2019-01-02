@@ -15,7 +15,7 @@
     <h1>BOOOOOOOOOKS!</h1>
 
     <ul>
-        <% books.id (book => { %>
+        <% book.id (book => { %>
             <li>
                 <img src=<%= book.image_url %> >
                 <h3><%= book.title %></h3>
@@ -27,6 +27,7 @@
             
         <% }) %>
     </ul>
+    
     
 </body>
 </html>
