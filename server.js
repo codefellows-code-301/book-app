@@ -15,6 +15,9 @@ app.set('view engine', 'ejs');
 app.get('/', home);
 app.post('/searches', search);
 
+app.get('/books/:id', visitBookDetail);
+
+
 //database
 const client = new pg.Client(process.env.DATABASE_URL);
 client.connect();
@@ -73,5 +76,19 @@ function handleError (err, response) {
   console.error(err);
   response.render('pages/error', err);
 }
+
+function visitBookDetail(request, response) {
+  let SQL = 'SELECT * FROM books where id=$1';
+  console.log([request.params.id]);
+  let values = [request.params.id];
+  return client.query(SQL, values)
+    .then(result => response.render('pages/books/detail', {books:result.rows[0]})
+      .catch( err => {
+        console.log('database request error')
+        return handleError(err, response);
+      })
+    )
+}
+
 
 app.listen( PORT, () => console.log(`APP is up on PORT:${PORT}`));
