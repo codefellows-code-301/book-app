@@ -16,15 +16,13 @@
 <body>
     <%include ../../layout/header%>
     <h4 id="searchInfo">Search Results</h4>
-    <ul>
+    <ul class="flex-container">
         <% books.forEach(book => { %>
-            <li>
+            <li class="flex-container search-results-card">
                 <img src=<%= book.image_url %> >
                 <h3><%= book.title %></h3>
                 <h4><%= book.author %></h4>
                 <p><%= book.description %></p>
-            </li>
-
                 <form action="/selectbook" method="POST">
                     <input type="hidden" value="<%= book.title%>" name="title">
                     <input type="hidden" value="<%= book.author%>" name="author">

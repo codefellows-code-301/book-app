@@ -24,6 +24,14 @@ nav {
   height: 15%;
 }
 
+.collection-count{
+  height: 35px;
+  background-color: rgba(82, 4, 4, 0.692);
+  text-align: center;
+  font-size: 25px;
+  padding-top: 3px;
+}
+
 ul {
   list-style: none;
   margin: auto;
@@ -80,8 +88,11 @@ form {
   border: 2px solid #D0D0D0;
   width: 75%;
   padding: 25px;
-  margin: 50px;
-  height: 50%
+  /* margin: 50px; */
+  margin-bottom: 8px;
+  height: 50%;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 input {
@@ -135,7 +146,6 @@ nav{
   height: 150px;
   width: 100%;
   background-color: #0E2A38;
-  margin-bottom: 15px;
 }
 
 /* Hamburger Menu */
@@ -285,8 +295,37 @@ footer{
   color: whitesmoke;
   height: 500px;
 }
+
 /* search page */
 .search-card{
   background-color: #2323238c;
   padding: 25px;
+  width: 50%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
 }
+
+.search-radio{
+  width: 50%;
+  text-align: center;
+}
+
+/*search results*/
+.search-results-card>p {
+  height: 200px;
+  overflow: scroll;
+}
+/* Hidden scrolling technique from Victor Meyer at https://codepen.io/pudgereyem/post/hide-scrollbar-with-css */
+.search-results-card>p::-webkit-scrollbar{
+  width: 0;
+  background-color: transparent;
+}
+
+.search-results-card>img{
+  margin-top: 8px;
+}
+
+

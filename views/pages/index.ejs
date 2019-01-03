@@ -15,10 +15,9 @@
     </head>
     <body>
         <%include ../layout/header%>
-        <main class="flex-container">
-            <!-- p tag of book collection count is not rendering... why? -->
-            <p <%= books.length %> Books in Collection</p>
-                <ul id="bookshelf">
+        <main>
+            <p class="collection-count"><%= books.length%> Books in Collection</p>
+                <ul id="bookshelf"  class="flex-container">
                     <% books.forEach(book => { %> 
                         <li class="new-book flex-container book-card">
                             <img src=<%= book.image_url %>>
