@@ -17,16 +17,16 @@
     <%include ../../layout/header%>
 
     <main class="flex-container">
-        <ul>
+        <ul class="flex-container">
             <%=selected_book.id  %>
-                <li class="flex-container book-card  detail-view">
-                    <img src=<%= selected_book.image_url %> >
-                    <h3><%= selected_book.title %></h3>
-                    <h4><%= selected_book.author %></h4>
-                    <p><%= selected_book.description %></p>
-                    <p><%= selected_book.isbn %></p>
-                    <p><%= selected_book.bookshelf %></p>
-                </li>
+            <li class="flex-container book-card  detail-view">
+                <img src=<%= selected_book.image_url %> >
+                <h3><%= selected_book.title %></h3>
+                <h4><%= selected_book.author %></h4>
+                <p><%= selected_book.description %></p>
+                <p><%= selected_book.isbn %></p>
+                <p><%= selected_book.bookshelf %></p>
+            </li>
         </ul>
     </main>
 </body>
