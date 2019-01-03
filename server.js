@@ -20,7 +20,7 @@ app.post('/selectbook', saveBook);
 
 
 //database
-const client = new pg.Client(process.env.DATABASE_URL);
+const client = new pg.Client(process.env.DATABASE_URL || process.env.HEROKU_POSTGRESQL_CYAN_URL);
 client.connect();
 client.on('error', err => console.error(err));
 
