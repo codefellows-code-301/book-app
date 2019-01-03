@@ -24,7 +24,17 @@
                 <h4><%= book.author %></h4>
                 <p><%= book.description %></p>
             </li>
-            
+
+                <form action="/selectbook" method="POST">
+                    <input type="hidden" value="<%= book.title%>" name="title">
+                    <input type="hidden" value="<%= book.author%>" name="author">
+                    <input type="hidden" value="<%= book.isbn%>" name="isbn">
+                    <input type="hidden" value="<%= book.image_url%>" name="image_url">
+                    <input type="hidden" value="<%= book.description%>" name="description'">
+                    <input type="submit" value="SELECT BOOK">
+                </form>
+            </li>
+
         <% }) %>
     </ul>
     
