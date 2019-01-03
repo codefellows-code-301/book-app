@@ -50,7 +50,7 @@ function search(request, response) {
   } else if (searchType === 'author') {
     url += `+inauthor:${searchStr}`;
   }
-
+console.log(url);
   return superagent.get(url)
     .then( result => {
       let books = result.body.items.map(book => new Book(book));
@@ -90,6 +90,7 @@ function visitBookDetail(request, response) {
 function saveBook(request, response) {
   console.log(request.body);
   let newBook = new BookshelfBook(request.body);
+  console.log({newBook});
   let bookArray = Object.values(newBook);
   bookArray.pop();
   let SQL = `INSERT INTO books(author, title, isbn, image_url, description, bookshelf)
@@ -104,21 +105,22 @@ function saveBook(request, response) {
 }
 
 function Book(book) {
+  console.log({book});
   this.author = book.volumeInfo.authors || 'Author Unknown';
-  this.title = book.volumeInfo.title || 'Title Missing';
+  this.title = book && book.volumeInfo && book.volumeInfo.title || 'Title Missing';
   this.isbn = book.volumeInfo.industryIdentifiers[0].type + book.volumeInfo.industryIdentifiers[0].identifier || 'ISBN Missing';
   this.image_url = book.volumeInfo.imageLinks.thumbnail || 'https://i.imgur.com/J5LVHEL.jpeg';
   this.description = book.volumeInfo.description || 'Description Missing';
 }
 
-function BookshelfBook(book, bookshelf) {
+function BookshelfBook(book) {
   this.author = book.author;
   this.title = book.title;
   this.isbn = book.isbn;
   this.image_url = book.image_url;
   this.description = book.description || 'description error';
   console.log('===', this.description);
-  this.bookshelf = bookshelf ? bookshelf : 'unassigned';
+  this.bookshelf = book.bookshelf || 'unassigned';
   this.id = book.id ? book.id : book.isbn;
 }
 
