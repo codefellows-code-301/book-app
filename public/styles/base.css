@@ -1,8 +1,130 @@
+
+/* Font Options to play with
+font-family: 'Alegreya', serif;
+font-family: 'Alegreya Sans', sans-serif;
+font-family: 'Alegreya SC', serif;
+font-family: 'Alegreya Sans SC', sans-serif;
+font-family: 'Playfair Display', serif;
+font-family: 'Playfair Display SC', serif; */
+* {
+  font-family: 'Playfair Display SC', serif;
+}
+
 body {
   height: 812px;
   background-image: url("../images/bookshelf-1082309_1920.jpg");
   background-size: cover;
 }
+
+nav {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  background-color: #326872;
+  border: 2px solid #D0D0D0;
+  color: white;
+  height: 15%;
+}
+
+ul {
+  list-style: none;
+  margin: auto;
+  margin-top: 3%;
+}
+
+li {
+  margin-top: 3%;
+  margin-bottom: 3%;
+  background-color:rgba(184,115,51, 0.8);
+  border: 2px solid #D0D0D0;
+  font-family: 'Alegreya Sans', sans-serif;
+  width: 50%;
+  color:  #D0D0D0;
+  font-weight: bold
+}
+
+img {
+  border: 2px solid #D0D0D0;
+}
+
+h1 {
+  font-family: 'Alegreya SC', serif;
+  font-size: 200%;
+  padding: 30px, 0, 30px, 9;
+  height: 50px;
+}
+
+h3 {
+  font-family: 'Alegreya SC', serif;
+  font-size: 150%;
+}
+
+h4 {
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.view-details{
+  color: white;
+  background-color:  #326872;
+  color:  #D0D0D0;
+  text-decoration: none;
+  padding: 5px;
+}
+
+#searchInfo {
+  background-color:  #4999a7;
+  font-family: 'Alegreya SC', serif;
+}
+
+form {
+  background-color:rgba(184,115,51, 0.8);
+  border: 2px solid #D0D0D0;
+  width: 75%;
+  padding: 25px;
+  margin: 50px;
+  height: 50%
+}
+
+input {
+  width: 10%;
+  background-color: #D0D0D0;
+}
+
+#book-search {
+  width: 90%;
+  background-color: #D0D0D0;
+}
+
+span {
+width: 50%;
+color: #D0D0D0;
+
+}
+
+button {
+  background-color:  #326872;
+  color: #D0D0D0;
+}
+
+/* Hamburger Menu */
+/* Adapted from Erik Terwan https://codepen.io/erikterwan/pen/EVzeRP */
+a
+{
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.menu-options {
+  color: rgba(184,115,51);
+
+}
+.menu-options:hover
+{
+  color:  #326872;
+}
+
+
 
 h1, h2, h3, h4, h5, label, p{
   color: whitesmoke;
@@ -79,6 +201,8 @@ a:hover
 {
   transform-origin: 0% 100%;
 }
+
+
 /* Transform all the slices of hamburger into a crossmark.*/
 #menuToggle input:checked ~ span
 {
@@ -86,6 +210,7 @@ a:hover
   transform: rotate(45deg) translate(-2px, -1px);
   background: #232323;
 }
+
 /*But let's hide the middle one.*/
 #menuToggle input:checked ~ span:nth-last-child(3)
 {
@@ -117,6 +242,7 @@ a:hover
 {
   padding: 10px 0;
   font-size: 22px;
+  background-color: #D0D0D0;
 }
 /* And let's slide it in from the left*/
 #menuToggle input:checked ~ ul
