@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Book Seatch</title>
+        <title>Book Search</title>
         <link href="https://fonts.googleapis.com/css?family=Alegreya|Alegreya+SC|Alegreya+Sans|Alegreya+Sans+SC|Playfair+Display|Playfair+Display+SC" rel="stylesheet">
         <link rel="icon" type="png" href="images/book_favicon.png"/>
         <link rel="stylesheet" type="text/css" href="styles/reset.css"/>
@@ -21,13 +21,13 @@
                 <input id="book-search" type="text" name="search" placeholder="Enter a title or author" required>
                 <!-- <div> -->
                     <fieldset class="search-radio">
-                        <label for="title">
-                            <span>Title</span>
-                            <input type="radio" name="search" value="title" required>
+                        <label class="radio-label" for="author">
+                            <span class="search-categories">Author</span>
+                            <input class="radio-button" type="radio" name="search" value="author" required>
                         </label>
-                        <label for="author">
-                            <span>Author</span>
-                            <input type="radio" name="search" value="author" required>
+                        <label class="radio-label" for="title">
+                            <span class="search-categories">Title</span>
+                            <input class="radio-button" type="radio" name="search" value="title" required>
                         </label>
                     </fieldset>
                 <!-- </div> -->

@@ -25,18 +25,23 @@
                 <p><%= book.description %></p>
                 <button type="button" class="form-button">Select Book</button>
                 <form action="/selectbook" method="POST" class="details-form">
-                    <input type="text" value="<%= book.title%>" name="title">
-                </br>
-                    <input type="text" value="<%= book.author%>" name="author">
-                </br>
-                    <input type="text" value="<%= book.isbn%>" name="isbn">
-                </br>
-                    <input type="text" value="<%= book.image_url%>" name="image_url">
-                </br>
-                    <input type="text" value="<%= book.description%>" name="description">
-                </br>
-                    <input type="text" name="bookshelf" required>
-                </br>
+                    <label for="title">Book Title: </label>
+                    <input id="title" type="text" value="<%= book.title%>" name="title">
+
+                    <label for="author">Book Author: </label>
+                    <input id="author" type="text" value="<%= book.author%>" name="author">
+
+                    <label for="isbn">ISBN: </label>
+                    <input id="isbn" type="text" value="<%= book.isbn%>" name="isbn">
+
+                    <input type="hidden" value="<%= book.image_url%>" name="image_url">
+
+                    <label for="description">Summary: </label>
+                    <textarea id="description" type="text" wrap="soft" value="<%= book.description%>" name="description"><%= book.description%></textarea>
+
+                    <label for="bookshelf">Bookshelf: </label>
+                    <input id="bookshelf" type="text" name="bookshelf" required>
+
                     <input id="save-book" type="submit" value="Save Book" id="submit-form-button">
                 </form>
             </li>
