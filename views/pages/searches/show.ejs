@@ -23,14 +23,21 @@
                 <h3><%= book.title %></h3>
                 <h4><%= book.author %></h4>
                 <p><%= book.description %></p>
-                <form action="/selectbook" method="POST">
-                    <input type="hidden" value="<%= book.title%>" name="title">
-                    <input type="hidden" value="<%= book.author%>" name="author">
-                    <input type="hidden" value="<%= book.isbn%>" name="isbn">
-                    <input type="hidden" value="<%= book.image_url%>" name="image_url">
-                    <input type="hidden" value="<%= book.description%>" name="description">
-                    <input type="text" name="bookshelf">
-                    <input type="submit" value="Select Book">
+                <button type="button" class="details-form-button">Select Book</button>
+                <form action="/selectbook" method="POST" class="details-form">
+                    <input type="text" value="<%= book.title%>" name="title">
+                </br>
+                    <input type="text" value="<%= book.author%>" name="author">
+                </br>
+                    <input type="text" value="<%= book.isbn%>" name="isbn">
+                </br>
+                    <input type="text" value="<%= book.image_url%>" name="image_url">
+                </br>
+                    <input type="text" value="<%= book.description%>" name="description">
+                </br>
+                    <input type="text" name="bookshelf" required>
+                </br>
+                    <input id="save-book" type="submit" value="Save Book" id="submit-form-button">
                 </form>
             </li>
 
@@ -38,4 +45,6 @@
     </ul>
     
 </body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="/js/app.js"></script>
 </html>
