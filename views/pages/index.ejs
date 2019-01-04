@@ -13,21 +13,22 @@
         <link rel="stylesheet" type="text/css" href="styles/layout.css"/>
         <link rel="stylesheet" type="text/css" href="styles/modules.css"/>
     </head>
-    <%include ../layout/header%>
     <body>
+        <%include ../layout/header%>
         <main>
-            <p class="collection-count"><%= books.length%> Books in Collection</p>
-                <ul id="bookshelf"  class="flex-container">
+            <h4 class="banner"><%= books.length%> Books in Collection</h4>
+                <ul id="bookshelf"  class="flex-column">
                     <% books.forEach(book => { %> 
-                        <li class="new-book flex-container book-card">
+                        <li class="new-book flex-column book-container">
                             <img src=<%= book.image_url %>>
                             <h3><%= book.title %></h3>
                             <h4><%= book.author %></h4>
-                            <a class="view-details" href="/books/<%=book.id%>">View Details</a>
+                            <a class="view-details-link" href="/books/<%=book.id%>">View Details</a>
                         </li>
                     <% }) %>
                 </ul>
             </form>
         </main>
+        <%include ../layout/footer%>
     </body>
 </html>

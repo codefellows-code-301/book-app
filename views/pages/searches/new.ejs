@@ -15,24 +15,23 @@
     </head>
     <body>
         <%include ../../layout/header%>
-        <main class="flex-container">
-            <h4 id="searchInfo">Search By Title or Author</h4>
-            <form action="/searches" method="post" class="search-card search-container">
+        <main class="flex-column">
+            <h4 class="banner">Search By Title or Author</h4>
+            <form action="/searches" method="post" class="search-form-container">
                 <input id="book-search" type="text" name="search" placeholder="Enter a title or author" required>
-                <!-- <div> -->
-                    <fieldset class="search-radio">
-                        <label class="radio-label" for="author">
-                            <span class="search-categories">Author</span>
-                            <input class="radio-button" type="radio" name="search" value="author" required>
-                        </label>
-                        <label class="radio-label" for="title">
-                            <span class="search-categories">Title</span>
-                            <input class="radio-button" type="radio" name="search" value="title" required>
-                        </label>
-                    </fieldset>
-                <!-- </div> -->
+                <fieldset class="search-radio">
+                    <label class="radio-label" for="author">
+                        <span class="search-categories">Author</span>
+                        <input class="radio-button" type="radio" name="search" value="author" required>
+                    </label>
+                    <label class="radio-label" for="title">
+                        <span class="search-categories">Title</span>
+                        <input class="radio-button" type="radio" name="search" value="title" required>
+                    </label>
+                </fieldset>
                 <button type="submit">Search the Google Books API</button>
             </form>
         </main>
+        <%include ../../layout/footer%>
     </body>
 </html>

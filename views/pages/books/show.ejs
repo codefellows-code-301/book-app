@@ -16,17 +16,17 @@
 <body>
     <%include ../../layout/header%>
 
-    <main class="flex-container">
-        <ul class="flex-container">
+    <main class="flex-column">
+        <h4 class="banner">Book Details</h4>
+        <ul class="flex-column">
             <%=selected_book.id  %>
-            <li class="flex-container book-card  detail-view">
+            <li class="flex-column book-container detail-view">
                 <img id = "detail-img" src=<%= selected_book.image_url %> >
                 <h3><%= selected_book.title %></h3>
                 <h4><%= selected_book.author %></h4>
-                <p><%= selected_book.description %></p>
+                <p class="detail-view-description"><%= selected_book.description %></p>
                 <p><%= selected_book.isbn %></p>
                 <p>Bookshelf: <%= selected_book.bookshelf %></p>
-                <button type="button" class="form-button">Select Book</button>
                 <form action="/books/edit/<%=selected_book.id%>" method="PUT">
                     <input type="hidden" name="_method" value="UPDATE">
                     <input type="submit" value="Edit Book Details">
@@ -38,5 +38,6 @@
             </li>
         </ul>
     </main>
+    <%include ../../layout/footer%>
 </body>
 </html>

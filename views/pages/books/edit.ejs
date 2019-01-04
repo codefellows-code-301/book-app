@@ -15,8 +15,7 @@
 </head>
 <body>
   <%include ../../layout/header%>
-
-  <main class="flex-container">
+  <main class="flex-column">
     <form action="/books/edit/<%=selected_book.id%>" method="POST">
       <input type="text" value="<%= book.title%>" name="title">
       <input type="text" value="<%= book.author%>" name="author">
@@ -25,7 +24,8 @@
       <input type="text" value="<%= book.description%>" name="description">
       <input type="select" name="bookshelf">
       <input type="submit" value="Update Book Details">
-  </form>
+    </form>
   </main>
+  <%include ../../layout/footer%>
 </body>
 </html>
