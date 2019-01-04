@@ -26,6 +26,7 @@
                 <p><%= selected_book.description %></p>
                 <p><%= selected_book.isbn %></p>
                 <p><%= selected_book.bookshelf %></p>
+                <button type="button" class="form-button">Select Book</button>
                 <form action="/books/edit/<%=selected_book.id%>" method="PUT">
                     <input type="hidden" name="_method" value="UPDATE">
                     <input type="submit" value="Edit Book Details">
