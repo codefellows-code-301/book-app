@@ -10,6 +10,10 @@ font-family: 'Playfair Display SC', serif; */
   font-family: 'Playfair Display SC', serif;
 }
 
+*:focus {
+  outline: none;
+}
+
 body {
   height: 812px;
   background-image: url("../images/bookshelf-1082309_1920.jpg");
@@ -33,6 +37,7 @@ nav {
   text-align: center;
   font-size: 25px;
   padding-top: 3px;
+  margin-top: 0px;
 }
 
 ul {
@@ -44,8 +49,8 @@ ul {
 li {
   margin-top: 3%;
   margin-bottom: 3%;
-  background-color:rgba(184,115,51, 0.8);
-  border: 3px outset #2323238c;
+  background-color:#2323238c;
+  border: 2px outset #D0D0D0;
   font-family: 'Alegreya Sans', sans-serif;
   width: 50%;
   color:  #D0D0D0;
@@ -81,56 +86,110 @@ h4 {
 }
 
 .view-details{
-  color: white;
-  background-color:   rgba(82, 4, 4, 0.692);
-  color:  #D0D0D0;
+  color: whitesmoke;
+  background-color:   rgba(82, 4, 4);
   text-decoration: none;
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
-  font-size: 200%;
-  border: 4px groove  rgba(82, 4, 4, 0.692);
+  font-size: 30px;
+  border: 5px outset rgba(82, 4, 4);
 }
 
 #searchInfo {
-  background-color:  #4999a7;
+  background-color:  rgba(82, 4, 4, 0.692);
   font-family: 'Alegreya SC', serif;
+  width: 100%;
+  text-align: center;
+  padding: 15px 0;
+  margin-top: 0px;
 }
 
 form {
-  background-color:rgba(184,115,51, 0.8);
-  border: 2px solid #D0D0D0;
-  width: 75%;
+  background-color:rgba(82, 4, 4, 0.692);
+  border: 2px outset #D0D0D0;
+  width: 90%;
   padding: 25px;
-  /* margin: 50px; */
+  margin-top: 10px;
   margin-bottom: 8px;
-  height: 50%;
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 input {
-  width: 10%;
+  width: 73%;
   background-color: #D0D0D0;
+  margin-bottom: 5px;
+  float: right;
 }
 
+textarea {
+  width: 73%;
+  background-color: #D0D0D0;
+  margin-bottom: 5px;
+  float: right;
+}
+label {
+  width: 18%;
+  font-family: 'Alegreya SC', serif;
+}
+
+#description {
+  height: 100px;
+  overflow: scroll;
+  /* Uncomment font-family below to remove all caps in summary field of select book form */
+  /* font-family: 'Alegreya Sans', sans-serif; */
+}
+
+#save-book {
+  margin-left: 0px;
+  margin-top: 30px;
+  width: 80%;
+  font-size: 20px;
+  background-color: rgba(208,208,208);
+  color: rgba(82, 4, 4);
+  font-family: 'Alegreya SC', serif;
+  padding: 5px 10px;
+  font-size: 20px;
+  border: 5px outset rgba(208,208,208);
+}
+
+#save-book:hover {
+  color: rgba(218,165,32);
+  font-style: italic;
+  
+}
 #book-search {
   width: 90%;
   background-color: #D0D0D0;
+  height: 30px;
+  font-size: 20px;
+  text-align: center;
 }
 
 span {
 width: 50%;
 color: #D0D0D0;
+font-size: 20px;
 
 }
 
 button {
-  background-color:  #326872;
+  background-color: rgba(82, 4, 4);
   color: #D0D0D0;
+  font-family: 'Alegreya SC', serif;
+  padding: 5px 10px;
+  font-size: 20px;
+  border: 5px outset rgba(82, 4, 4);
+  
 }
 
+button:hover {
+  font-style: italic;
+  color: goldenrod;
+}
 /* Hamburger Menu */
 /* Adapted from Erik Terwan https://codepen.io/erikterwan/pen/EVzeRP */
 a
@@ -140,12 +199,12 @@ a
 }
 
 .menu-options {
-  color: rgba(184,115,51);
+  color: #0E2A38;
 
 }
 .menu-options:hover
 {
-  color:  #326872;
+  color:  rgb(82, 4, 4, 0.692);
 }
 
 h1, h2, h3, h4, h5, label, p{
@@ -233,7 +292,7 @@ a
 #menu
 {
   position: absolute;
-  width: 300px;
+  width: 150px;
   margin: -100px 0 0 -50px;
   padding: 50px;
   padding-top: 125px;
@@ -247,9 +306,11 @@ a
 }
 #menu li
 {
-  padding: 10px 0;
+  padding: 10px 117px 10px 0px;
   font-size: 22px;
-  background-color: #D0D0D0;
+  background-color: #ededed;
+  border: none;
+  font-family: 'Alegreya SC', serif;
 }
 /* And let's slide it in from the left*/
 #menuToggle input:checked ~ ul
@@ -286,7 +347,7 @@ footer{
 .book-card>a{
   color: #D0D0D0;
   font-family: 'Alegreya SC', serif;
-  font-size: 100%;
+  font-size: 20px;
   
 }
 .book-card>a:hover{
@@ -297,7 +358,7 @@ footer{
 /* details page */
 .detail-view{
   color: whitesmoke;
-  height: 500px;
+  height: 1200px;
 }
 
 /* search page */
@@ -310,16 +371,33 @@ footer{
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  margin-top: 20px;
 }
 
-.search-radio{
+
+.search-radio {
   width: 50%;
   text-align: center;
+  /* cursor: default; */
 }
 
+.radio-label {
+  width: 50%;
+  text-align: center;
+  float: right;
+}
+
+.radio-button {
+  width: 50%;
+  text-align: center;
+  float: right;
+}
 /*search results*/
+.search-results-card {
+  padding: 20px;
+}
 .search-results-card>p {
-  /* height: 200px; */
+  height: 200px;
   overflow: scroll;
 }
 /* Hidden scrolling technique from Victor Meyer at https://codepen.io/pudgereyem/post/hide-scrollbar-with-css */
@@ -341,4 +419,31 @@ footer{
 .details-form input {
   width: 90%;
   display: block;
+}
+
+li.flex-container.book-card.detail-view.p {
+  height: 1200px;
+}
+
+p {
+ margin-top: 5px; 
+ font-size: 20px;
+ overflow: scroll;
+ text-align: center;
+}
+
+/* #detail-img {
+  width: 200px;
+  height: 400px;
+} */
+
+.form-button {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  width: 90%;
+  font-family: 'Alegreya SC', serif;
+  padding: 5px 10px;
+  font-size: 30px;
+  height: 60px;
+  color: whitesmoke;
 }
