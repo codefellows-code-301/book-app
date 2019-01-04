@@ -7,16 +7,38 @@ const superagent = require('superagent');
 const app = express();
 const pg = require('pg');
 const PORT = process.env.PORT || 3000;
+const methodOverride = require('method-override');
 require('dotenv').config();
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('./public'));
+app.use(methodOverride((request, response) => {
+  if(request.body && typeof request.body === 'object' && '_method' in request.body) {
+    console.log(request.body['_method']);
+    let method = request.body['_method'];
+    delete request.body['_method'];
+    return method; //returns PUT, PATCH, POST, GET, or DELETE.
+  }
+}))
+
 app.set('view engine', 'ejs');
+
 app.get('/', home);
 app.get('/new', newSearch);
-app.post('/searches', search);
 app.get('/books/:id', visitBookDetail);
+
+app.post('/searches', search);
 app.post('/selectbook', saveBook);
+app.delete('/books/:id', deleteBook)
+
+function deleteBook(request, response) {
+  console.log (`deleting the book ${request.params.id}`);
+  client.query(`DELETE FROM books WHERE id=$1`, [request.params.id])
+    .then(result => {
+      console.log(result);
+      response.redirect('/');
+    })
+}
 
 
 //database
@@ -50,7 +72,7 @@ function search(request, response) {
   } else if (searchType === 'author') {
     url += `+inauthor:${searchStr}`;
   }
-console.log(url);
+  console.log(url);
   return superagent.get(url)
     .then( result => {
       let books = result.body.items.map(book => new Book(book));
