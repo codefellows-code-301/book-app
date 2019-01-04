@@ -106,11 +106,11 @@ function saveBook(request, response) {
 
 function Book(book) {
   console.log({book});
-  this.author = book.volumeInfo.authors || 'Author Unknown';
+  this.author = book && book.volumeInfo && book.volumeInfo.authors || 'Author Unknown';
   this.title = book && book.volumeInfo && book.volumeInfo.title || 'Title Missing';
-  this.isbn = book.volumeInfo.industryIdentifiers[0].type + book.volumeInfo.industryIdentifiers[0].identifier || 'ISBN Missing';
-  this.image_url = book.volumeInfo.imageLinks.thumbnail || 'https://i.imgur.com/J5LVHEL.jpeg';
-  this.description = book.volumeInfo.description || 'Description Missing';
+  this.isbn = book && book.volumeInfo && book.volumeInfo.industryIdentifiers[0].type + book.volumeInfo.industryIdentifiers[0].identifier || 'ISBN Missing';
+  this.image_url = book && book.volumeInfo && book.volumeInfo.imageLinks.thumbnail || 'https://i.imgur.com/J5LVHEL.jpeg';
+  this.description = book && book.volumeInfo && book.volumeInfo.description || 'Description Missing';
 }
 
 function BookshelfBook(book) {
