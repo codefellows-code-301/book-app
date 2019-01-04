@@ -7,17 +7,57 @@ const superagent = require('superagent');
 const app = express();
 const pg = require('pg');
 const PORT = process.env.PORT || 3000;
+const methodOverride = require('method-override');
 require('dotenv').config();
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('./public'));
+app.use(methodOverride((request, response) => {
+  if(request.body && typeof request.body === 'object' && '_method' in request.body) {
+    console.log(request.body['_method']);
+    let method = request.body['_method'];
+    delete request.body['_method'];
+    return method; //returns PUT, PATCH, POST, GET, or DELETE.
+  }
+}))
+
 app.set('view engine', 'ejs');
+
 app.get('/', home);
 app.get('/new', newSearch);
-app.post('/searches', search);
 app.get('/books/:id', visitBookDetail);
-app.post('/selectbook', saveBook);
 
+app.post('/searches', search);
+app.post('/selectbook', saveBook);
+// app.put('/books/edit/:id', updateBook);
+app.delete('/books/:id', deleteBook)
+
+function deleteBook(request, response) {
+  console.log (`deleting the book ${request.params.id}`);
+  client.query(`DELETE FROM books WHERE id=$1`, [request.params.id])
+    .then(result => {
+      console.log(result);
+      response.redirect('/');
+    })
+    .catch( err => {
+      console.log('delete book error')
+      return handleError(err, response);
+    })
+}
+
+// function updateBook(request, response) {
+//   console.log (`updating the book ${request.params.id}`);
+//   client.query(`SELECT DISTINCT FROM books WHERE id=$1`, [request.params.id])
+//     .then(result => {
+//       console.log('hi were here')
+//       console.log(result);
+//       response.redirect('/books/:id');
+//     })
+//     .catch( err => {
+//       console.log('update book error')
+//       return handleError(err, response);
+//     })
+// }
 
 //database
 const client = new pg.Client(process.env.DATABASE_URL || process.env.HEROKU_POSTGRESQL_CYAN_URL);
@@ -50,7 +90,6 @@ function search(request, response) {
   } else if (searchType === 'author') {
     url += `+inauthor:${searchStr}`;
   }
-console.log(url);
   return superagent.get(url)
     .then( result => {
       let books = result.body.items.map(book => new Book(book));
@@ -88,14 +127,12 @@ function visitBookDetail(request, response) {
 
 
 function saveBook(request, response) {
-  console.log(request.body);
   let newBook = new BookshelfBook(request.body);
-  console.log({newBook});
   let bookArray = Object.values(newBook);
   bookArray.pop();
   let SQL = `INSERT INTO books(author, title, isbn, image_url, description, bookshelf)
   VALUES($1, $2, $3, $4, $5, $6)`
-  console.log('the book array is:', bookArray)
+
   return client.query(SQL, bookArray)
     .then( () => response.redirect('/'))
     .catch( err => {
@@ -105,7 +142,6 @@ function saveBook(request, response) {
 }
 
 function Book(book) {
-  console.log({book});
   this.author = book && book.volumeInfo && book.volumeInfo.authors || 'Author Unknown';
   this.title = book && book.volumeInfo && book.volumeInfo.title || 'Title Missing';
   this.isbn = book && book.volumeInfo && book.volumeInfo.industryIdentifiers[0].type + book.volumeInfo.industryIdentifiers[0].identifier || 'ISBN Missing';
@@ -119,7 +155,6 @@ function BookshelfBook(book) {
   this.isbn = book.isbn;
   this.image_url = book.image_url;
   this.description = book.description || 'description error';
-  console.log('===', this.description);
   this.bookshelf = book.bookshelf || 'unassigned';
   this.id = book.id ? book.id : book.isbn;
 }

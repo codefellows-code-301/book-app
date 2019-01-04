@@ -26,6 +26,14 @@
                 <p><%= selected_book.description %></p>
                 <p><%= selected_book.isbn %></p>
                 <p><%= selected_book.bookshelf %></p>
+                <form action="/books/edit/<%=selected_book.id%>" method="PUT">
+                    <input type="hidden" name="_method" value="UPDATE">
+                    <input type="submit" value="Edit Book Details">
+                </form>
+                <form action="/books/<%=selected_book.id%>" method="POST">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="submit" value="Remove from Bookshelf">
+                </form>
             </li>
         </ul>
     </main>
