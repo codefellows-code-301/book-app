@@ -37,7 +37,7 @@ function deleteBook(request, response) {
   client.query(`DELETE FROM books WHERE id=$1`, [request.params.id])
     .then(result => {
       console.log(result);
-      response.redirect('/');
+      response.render('/');
     })
     .catch( err => {
       console.log('delete book error')
@@ -134,7 +134,7 @@ function saveBook(request, response) {
   VALUES($1, $2, $3, $4, $5, $6)`
 
   return client.query(SQL, bookArray)
-    .then( () => response.redirect('/'))
+    .then( () => response.render('/'))
     .catch( err => {
       console.log('database input error')
       return handleError(err, response);
