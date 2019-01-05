@@ -26,10 +26,11 @@ app.set('view engine', 'ejs');
 app.get('/', home);
 app.get('/new', newSearch);
 app.get('/books/:id', visitBookDetail);
+app.get('/books/edit/:id', visitBookUpdate);
 
 app.post('/searches', search);
 app.post('/selectbook', saveBook);
-// app.put('/books/edit/:id', updateBook);
+app.put('/books/:id', updateBook);
 app.delete('/books/:id', deleteBook)
 
 function deleteBook(request, response) {
@@ -45,22 +46,39 @@ function deleteBook(request, response) {
     })
 }
 
-// function updateBook(request, response) {
-//   console.log (`updating the book ${request.params.id}`);
-//   client.query(`SELECT DISTINCT FROM books WHERE id=$1`, [request.params.id])
-//     .then(result => {
-//       console.log('hi were here')
-//       console.log(result);
-//       response.redirect('/books/:id');
-//     })
-//     .catch( err => {
-//       console.log('update book error')
-//       return handleError(err, response);
-//     })
-// }
+function visitBookUpdate(request, response){
+  let SQL = 'SELECT * FROM books where id=$1';
+  let values = [request.params.id];
+  return client.query(SQL, values)
+    .then(result => {
+      response.render('pages/books/update', { selected_book: result.rows[0] }
+      )
+    })
+    .catch(err => {
+      console.log('database request error')
+      return handleError(err, response);
+    })
+}
+
+
+function updateBook(request, response) {
+  console.log (`updating the book ${request.params.id}`);
+  const values = [request.body.title, request.body.isbn, request.body.image_url, request.body.description, request.body.bookshelf, request.body.author, request.params.id];
+
+  client.query(`UPDATE books SET title=$1, isbn=$2, image_url=$3, description=$4, bookshelf=$5, author=$6  WHERE id=$7`, values)
+    .then(result => {
+      console.log('hi were here')
+      console.log(result);
+      response.redirect(`/books/${request.params.id}`);
+    })
+    .catch( err => {
+      console.log('update book error')
+      return handleError(err, response);
+    })
+}
 
 //database
-const client = new pg.Client(process.env.DATABASE_URL || process.env.HEROKU_POSTGRESQL_CYAN_URL);
+const client = new pg.Client(process.env.DATABASE_URL);
 client.connect();
 client.on('error', err => console.error(err));
 
@@ -144,7 +162,9 @@ function saveBook(request, response) {
 function Book(book) {
   this.author = book && book.volumeInfo && book.volumeInfo.authors || 'Author Unknown';
   this.title = book && book.volumeInfo && book.volumeInfo.title || 'Title Missing';
-  this.isbn = book && book.volumeInfo && book.volumeInfo.industryIdentifiers &&book.volumeInfo.industryIdentifiers[0] && book.volumeInfo.industryIdentifiers[0].type + book.volumeInfo.industryIdentifiers[0].identifier || 'ISBN Missing';
+
+  this.isbn = book && book.volumeInfo && book.volumeInfo.industryIdentifiers && book.volumeInfo.industryIdentifiers[0] && book.volumeInfo.industryIdentifiers[0].type + book.volumeInfo.industryIdentifiers[0].identifier || 'ISBN Missing';
+
   this.image_url = book && book.volumeInfo && book.volumeInfo.imageLinks.thumbnail || 'https://i.imgur.com/J5LVHEL.jpeg';
   this.description = book && book.volumeInfo && book.volumeInfo.description || 'Description Missing';
 }

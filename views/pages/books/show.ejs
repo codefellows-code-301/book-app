@@ -22,14 +22,16 @@
             <%=selected_book.id  %>
             <li class="flex-column detail-view">
                 <img id = "detail-img" src=<%= selected_book.image_url %> >
-                <h3><%= selected_book.title %></h3>
-                <h4><%= selected_book.author %></h4>
-                <p class="detail-view-description"><%= selected_book.description %></p>
-                <p><%= selected_book.isbn %></p>
-                <p>Bookshelf: <%= selected_book.bookshelf %></p>
+                <section class="details-show">
+                    <h3><%= selected_book.title %></h3>
+                    <h4><%= selected_book.author %></h4>
+                    <p class="detail-view-description"><%= selected_book.description %></p>
+                    <p><%= selected_book.isbn %></p>
+                    <p>Bookshelf: <%= selected_book.bookshelf %></p>
+                </section>
                 <form action="/books/edit/<%=selected_book.id%>" method="PUT">
                     <input type="hidden" name="_method" value="UPDATE">
-                    <input type="submit" value="Edit Book Details">
+                    <input class="edit-button" type="submit" value="Edit Book Details">
                 </form>
                 <form action="/books/<%=selected_book.id%>" method="POST">
                     <input type="hidden" name="_method" value="DELETE">
@@ -40,4 +42,6 @@
     </main>
     <%include ../../layout/footer%>
 </body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="/js/app.js"></script>
 </html>

@@ -71,7 +71,7 @@ main{
 /* This button styling does not have any effect, but some desired effects have gone missing - simplify form button classes below? */
 button {
   background-color: rgba(82, 4, 4);
-  color: #D0D0D0;
+  color: whitesmoke;
   font-family: 'Alegreya SC', serif;
   padding: 5px 10px;
   font-size: 20px;
@@ -102,7 +102,7 @@ button:hover {
 nav {
   box-sizing: border-box;
   border-bottom: 2px solid #D0D0D0;
-  color: white;
+  color: whitesmoke;
   height: 150px;
   width: 100%;
   background-color: #0E2A38;
@@ -234,7 +234,7 @@ li {
   border: 2px outset #D0D0D0;
   font-family: 'Alegreya Sans', sans-serif;
   width: 80%;
-  color:  #D0D0D0;
+  color:  whitesmoke;
   font-weight: bold;
   justify-content: space-evenly;
   padding: 3%;
@@ -364,7 +364,7 @@ input, textarea {
 
 .search-categories {
   width: 50%;
-  color: #D0D0D0;
+  color: whitesmoke;
   font-size: 20px;
 }
 
@@ -372,6 +372,10 @@ input, textarea {
 .details-form {
   display:none;
 }
+
+/* .details-hide {
+  display:none;
+} */
 
 .details-form input {
   width: 90%;
@@ -413,7 +417,7 @@ input, textarea {
     border: 2px outset #D0D0D0;
     font-family: 'Alegreya Sans', sans-serif;
     width: 50%;
-    color:  #D0D0D0;
+    color:  whitesmoke;
     font-weight: bold;
     justify-content: space-evenly;
   }
