@@ -45,10 +45,6 @@ function deleteBook(request, response) {
     })
 }
 
-function visitBookUpdate(request, response){
-  
-}
-}
 // function updateBook(request, response) {
 //   console.log (`updating the book ${request.params.id}`);
 //   client.query(`SELECT DISTINCT FROM books WHERE id=$1`, [request.params.id])
