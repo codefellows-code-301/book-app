@@ -19,17 +19,17 @@
         <h4 class="banner">Search Results</h4>
         <ul class="flex-column">
             <% books.forEach(book => { %>
-                <li class="flex-column searched-book-container">
+                <li class="flex-column">
                     <img src=<%= book.image_url %> >
                     <h3><%= book.title %></h3>
                     <h4><%= book.author %></h4>
                     <p class="detail-view-description"><%= book.description %></p>
                     <button type="button" class="form-button">Select Book</button>
                     <form action="/selectbook" method="POST" class="details-form">
-                        <label for="title">Book Title: </label>
+                        <label for="title">Title: </label>
                         <input id="title" type="text" value="<%= book.title%>" name="title">
 
-                        <label for="author">Book Author: </label>
+                        <label for="author">Author: </label>
                         <input id="author" type="text" value="<%= book.author%>" name="author">
 
                         <label for="isbn">ISBN: </label>
