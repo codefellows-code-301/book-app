@@ -45,6 +45,10 @@ function deleteBook(request, response) {
     })
 }
 
+function visitBookUpdate(request, response){
+  
+}
+}
 // function updateBook(request, response) {
 //   console.log (`updating the book ${request.params.id}`);
 //   client.query(`SELECT DISTINCT FROM books WHERE id=$1`, [request.params.id])
@@ -144,7 +148,7 @@ function saveBook(request, response) {
 function Book(book) {
   this.author = book && book.volumeInfo && book.volumeInfo.authors || 'Author Unknown';
   this.title = book && book.volumeInfo && book.volumeInfo.title || 'Title Missing';
-  this.isbn = book && book.volumeInfo && book.volumeInfo.industryIdentifiers[0].type + book.volumeInfo.industryIdentifiers[0].identifier || 'ISBN Missing';
+  this.isbn = book && book.volumeInfo && book.volumeInfo.industryIdentifiers &&book.volumeInfo.industryIdentifiers[0] && book.volumeInfo.industryIdentifiers[0].type + book.volumeInfo.industryIdentifiers[0].identifier || 'ISBN Missing';
   this.image_url = book && book.volumeInfo && book.volumeInfo.imageLinks.thumbnail || 'https://i.imgur.com/J5LVHEL.jpeg';
   this.description = book && book.volumeInfo && book.volumeInfo.description || 'Description Missing';
 }
