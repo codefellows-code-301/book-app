@@ -15,39 +15,41 @@
 </head>
 <body>
     <%include ../../layout/header%>
-    <h4 class="banner">Search Results</h4>
-    <ul class="flex-column">
-        <% books.forEach(book => { %>
-            <li class="flex-column searched-book-container">
-                <img src=<%= book.image_url %> >
-                <h3><%= book.title %></h3>
-                <h4><%= book.author %></h4>
-                <p class="detail-view-description"><%= book.description %></p>
-                <button type="button" class="form-button">Select Book</button>
-                <form action="/selectbook" method="POST" class="details-form">
-                    <label for="title">Book Title: </label>
-                    <input id="title" type="text" value="<%= book.title%>" name="title">
+    <main class="flex-column">
+        <h4 class="banner">Search Results</h4>
+        <ul class="flex-column">
+            <% books.forEach(book => { %>
+                <li class="flex-column searched-book-container">
+                    <img src=<%= book.image_url %> >
+                    <h3><%= book.title %></h3>
+                    <h4><%= book.author %></h4>
+                    <p class="detail-view-description"><%= book.description %></p>
+                    <button type="button" class="form-button">Select Book</button>
+                    <form action="/selectbook" method="POST" class="details-form">
+                        <label for="title">Book Title: </label>
+                        <input id="title" type="text" value="<%= book.title%>" name="title">
 
-                    <label for="author">Book Author: </label>
-                    <input id="author" type="text" value="<%= book.author%>" name="author">
+                        <label for="author">Book Author: </label>
+                        <input id="author" type="text" value="<%= book.author%>" name="author">
 
-                    <label for="isbn">ISBN: </label>
-                    <input id="isbn" type="text" value="<%= book.isbn%>" name="isbn">
+                        <label for="isbn">ISBN: </label>
+                        <input id="isbn" type="text" value="<%= book.isbn%>" name="isbn">
 
-                    <input type="hidden" value="<%= book.image_url%>" name="image_url">
+                        <input type="hidden" value="<%= book.image_url%>" name="image_url">
 
-                    <label for="description">Summary: </label>
-                    <textarea id="description" type="text" wrap="soft" value="<%= book.description%>" name="description"><%= book.description%></textarea>
+                        <label for="description">Summary: </label>
+                        <textarea id="description" type="text" wrap="soft" value="<%= book.description%>" name="description"><%= book.description%></textarea>
 
-                    <label for="bookshelf">Bookshelf: </label>
-                    <input id="bookshelf" type="text" name="bookshelf" required>
+                        <label for="bookshelf">Bookshelf: </label>
+                        <input id="bookshelf" type="text" name="bookshelf" required>
 
-                    <input id="save-book-button" type="submit" value="Save Book" id="submit-form-button">
-                </form>
-            </li>
+                        <input id="save-book-button" type="submit" value="Save Book" id="submit-form-button">
+                    </form>
+                </li>
 
-        <% }) %>
-    </ul>
+            <% }) %>
+        </ul>
+    </main>
     <%include ../../layout/footer%>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>

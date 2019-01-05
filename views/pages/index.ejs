@@ -15,7 +15,7 @@
     </head>
     <body>
         <%include ../layout/header%>
-        <main>
+        <main class="flex-column">
             <h4 class="banner"><%= books.length%> Books in Collection</h4>
                 <ul id="bookshelf"  class="flex-column">
                     <% books.forEach(book => { %> 
