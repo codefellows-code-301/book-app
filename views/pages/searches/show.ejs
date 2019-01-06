@@ -41,7 +41,14 @@
                         <textarea id="description" type="text" wrap="soft" value="<%= book.description%>" name="description"><%= book.description%></textarea>
 
                         <label for="bookshelf">Bookshelf: </label>
-                        <input id="bookshelf" type="text" name="bookshelf" required>
+                        <select class="show-bookshelf-list" id="bookshelf" type="text" name="bookshelf" required>
+                            <option value="default" selected>SELECT BOOKSHELF</option>
+                            <% bookshelfList.forEach(genre => { %>
+                                <option value='<%= genre %>'><%= genre %></option>
+                            <% }) %>
+                                <option  value='NEW BOOKSHELF'>NEW BOOKSHELF</option>
+                            <input id="bookshelf-value" class="hide-input-field" type="text" name="bookshelf" value="<%= book.bookshelf %>" required>
+                        </select>
 
                         <input id="save-book-button" type="submit" value="Save Book" id="submit-form-button">
                     </form>

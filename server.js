@@ -49,17 +49,55 @@ function deleteBook(request, response) {
 function visitBookUpdate(request, response){
   let SQL = 'SELECT * FROM books where id=$1';
   let values = [request.params.id];
+
   return client.query(SQL, values)
     .then(result => {
-      response.render('pages/books/update', { selected_book: result.rows[0] }
-      )
+
+      return bookShelfList()
+        .then ( shelf => {
+          response.render('pages/books/update', {selected_book:result.rows[0], bookshelfList:shelf});
+        })
+        .catch( err => {
+          console.log('visitbook shelf error')
+          return handleError(err, response);
+        })
     })
+
     .catch(err => {
       console.log('database request error')
       return handleError(err, response);
     })
 }
 
+// function updateBook(request, response) {
+//   console.log (`updating the book ${request.params.id}`);
+//   client.query(`SELECT DISTINCT FROM books WHERE id=$1`, [request.params.id])
+//     .then(result => {
+//       console.log('hi were here')
+//       console.log(result);
+//       response.redirect('/books/:id');
+//     })
+//     .catch( err => {
+//       console.log('update book error')
+//       return handleError(err, response);
+//     })
+// }
+function bookShelfList() {
+  let bookshelfArray = [];
+  // return bookshelfArray;
+  return client.query(`SELECT DISTINCT bookshelf FROM books`)
+    .then(result=> {
+      for (var i in result.rows){
+        bookshelfArray.push(result.rows[i].bookshelf);
+      }
+      console.log(bookshelfArray)
+      return bookshelfArray;
+    })
+    .catch( err => {
+      console.log('get bookshelves error')
+      return handleError(err, response);
+    })
+}
 
 function updateBook(request, response) {
   console.log (`updating the book ${request.params.id}`);
@@ -108,13 +146,21 @@ function search(request, response) {
   } else if (searchType === 'author') {
     url += `+inauthor:${searchStr}`;
   }
+
   return superagent.get(url)
     .then( result => {
       let books = result.body.items.map(book => new Book(book));
-      response.render('pages/searches/show', {books});
+      return bookShelfList()
+        .then ( shelf => {
+          response.render('pages/searches/show', {books, bookshelfList:shelf});
+        })
+        .catch( err => {
+          console.log('superagent shelf error')
+          return handleError(err, response);
+        })
     })
     .catch( err => {
-      console.log('superagent error')
+      console.log('superagent get book error')
       return handleError(err, response);
     })
 }
@@ -132,6 +178,9 @@ function handleError (err, response) {
 function visitBookDetail(request, response) {
   let SQL = 'SELECT * FROM books where id=$1';
   let values = [request.params.id];
+
+  bookShelfList()
+
   return client.query(SQL, values)
     .then(result => {
       response.render('pages/books/show', {selected_book:result.rows[0]}
@@ -150,6 +199,8 @@ function saveBook(request, response) {
   bookArray.pop();
   let SQL = `INSERT INTO books(author, title, isbn, image_url, description, bookshelf)
   VALUES($1, $2, $3, $4, $5, $6)`
+
+  bookShelfList()
 
   return client.query(SQL, bookArray)
     .then( () => response.redirect('/'))
@@ -175,7 +226,7 @@ function BookshelfBook(book) {
   this.isbn = book.isbn;
   this.image_url = book.image_url;
   this.description = book.description || 'description error';
-  this.bookshelf = book.bookshelf || 'unassigned';
+  this.bookshelf = book.bookshelf.toUpperCase() || 'unassigned';
   this.id = book.id ? book.id : book.isbn;
 }
 

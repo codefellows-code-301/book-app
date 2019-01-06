@@ -11,3 +11,17 @@ $('.edit-button').on('click', function(){
   $('section').next().removeClass('details-show').addClass('details-hide');
 });
 
+$('.show-bookshelf-list').on('change', function(){
+  var selectedBookshelf = $(this).val();
+  console.log((this).value)//this works
+  if(selectedBookshelf === 'NEW BOOKSHELF'){
+    $(this).parent().find('#bookshelf-value').val('');
+    $(this).parent().find('#bookshelf-value').show();
+    console.log('++++ option changed +++++');
+  }else {
+    $(this).parent().find('#bookshelf-value').val(selectedBookshelf);
+    $('#bookshelf-value').hide();
+    console.log('I should be hiding');
+
+  }
+});
