@@ -273,7 +273,7 @@ img {
 .detail-view-description {
   height: 200px;
   overflow: scroll;
-  font-size: 
+  font-size: 20px;
 }
 
 .detail-view-description::-webkit-scrollbar{
@@ -456,7 +456,9 @@ input, textarea {
   }
 }
 
-
+/* .hide-input-field {
+  display: none;
+} */
 
 
 
