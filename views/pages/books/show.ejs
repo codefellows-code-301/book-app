@@ -29,13 +29,13 @@
                     <p><%= selected_book.isbn %></p>
                     <p>Bookshelf: <%= selected_book.bookshelf %></p>
                 </section>
-                <form action="/books/edit/<%=selected_book.id%>" method="PUT">
+                <form action="/books/edit/<%=selected_book.id%>" method="PUT" class="details-page-form">
                     <input type="hidden" name="_method" value="UPDATE">
-                    <input class="edit-button" type="submit" value="Edit Book Details">
+                    <input type="submit" value="Edit Book Details" class="detail-view-button">
                 </form>
-                <form action="/books/<%=selected_book.id%>" method="POST">
+                <form action="/books/<%=selected_book.id%>" method="POST" class="details-page-form">
                     <input type="hidden" name="_method" value="DELETE">
-                    <input type="submit" value="Remove from Bookshelf">
+                    <input type="submit" value="Remove from Bookshelf" class="detail-view-button">
                 </form>
             </li>
         </ul>
