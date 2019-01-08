@@ -20,7 +20,7 @@
         <ul class="flex-column">
             <% books.forEach(book => { %>
                 <li class="flex-column">
-                    <img src=<%= book.image_url %> >
+                    <img class="search-view-img" src=<%= book.image_url %> >
                     <h3><%= book.title %></h3>
                     <h4><%= book.author %></h4>
                     <p class="detail-view-description"><%= book.description %></p>

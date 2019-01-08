@@ -69,19 +69,6 @@ function visitBookUpdate(request, response){
     })
 }
 
-// function updateBook(request, response) {
-//   console.log (`updating the book ${request.params.id}`);
-//   client.query(`SELECT DISTINCT FROM books WHERE id=$1`, [request.params.id])
-//     .then(result => {
-//       console.log('hi were here')
-//       console.log(result);
-//       response.redirect('/books/:id');
-//     })
-//     .catch( err => {
-//       console.log('update book error')
-//       return handleError(err, response);
-//     })
-// }
 function bookShelfList() {
   let bookshelfArray = [];
   // return bookshelfArray;
@@ -179,8 +166,6 @@ function visitBookDetail(request, response) {
   let SQL = 'SELECT * FROM books where id=$1';
   let values = [request.params.id];
 
-  bookShelfList()
-
   return client.query(SQL, values)
     .then(result => {
       response.render('pages/books/show', {selected_book:result.rows[0]}
@@ -200,8 +185,6 @@ function saveBook(request, response) {
   let SQL = `INSERT INTO books(author, title, isbn, image_url, description, bookshelf)
   VALUES($1, $2, $3, $4, $5, $6)`
 
-  bookShelfList()
-
   return client.query(SQL, bookArray)
     .then( () => response.redirect('/'))
     .catch( err => {
@@ -213,9 +196,7 @@ function saveBook(request, response) {
 function Book(book) {
   this.author = book && book.volumeInfo && book.volumeInfo.authors || 'Author Unknown';
   this.title = book && book.volumeInfo && book.volumeInfo.title || 'Title Missing';
-
   this.isbn = book && book.volumeInfo && book.volumeInfo.industryIdentifiers && book.volumeInfo.industryIdentifiers[0] && book.volumeInfo.industryIdentifiers[0].type + book.volumeInfo.industryIdentifiers[0].identifier || 'ISBN Missing';
-
   this.image_url = book && book.volumeInfo && book.volumeInfo.imageLinks.thumbnail || 'https://i.imgur.com/J5LVHEL.jpeg';
   this.description = book && book.volumeInfo && book.volumeInfo.description || 'Description Missing';
 }
@@ -226,7 +207,7 @@ function BookshelfBook(book) {
   this.isbn = book.isbn;
   this.image_url = book.image_url;
   this.description = book.description || 'description error';
-  this.bookshelf = book.bookshelf.toUpperCase() || 'unassigned';
+  this.bookshelf = book.bookshelf || 'unassigned';
   this.id = book.id ? book.id : book.isbn;
 }
 

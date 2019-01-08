@@ -266,12 +266,12 @@ img {
 }
 
 .detail-view{
-  height: 1000px;
+  min-height: 1000px;
 }
 
 /* Hidden scrolling technique from Victor Meyer at https://codepen.io/pudgereyem/post/hide-scrollbar-with-css */
 .detail-view-description {
-  height: 200px;
+  max-height: 200px;
   overflow: scroll;
   font-size: 20px;
 }
@@ -368,14 +368,24 @@ input, textarea {
   font-size: 20px;
 }
 
+.radio-button{
+  width: 100%;
+  text-align: center;
+  float: center;
+}
+
 /* SHOW/HIDE FORM */
 .details-form {
   display:none;
 }
 
-/* .details-hide {
+.details-hide {
   display:none;
-} */
+}
+
+.hide-input-field {
+  display: none;
+}
 
 .details-form input {
   width: 90%;
@@ -411,15 +421,7 @@ input, textarea {
   }
 
   li {
-    margin-top: 3%;
-    margin-bottom: 3%;
-    background-color:#2323238c;
-    border: 2px outset #D0D0D0;
-    font-family: 'Alegreya Sans', sans-serif;
     width: 50%;
-    color:  whitesmoke;
-    font-weight: bold;
-    justify-content: space-evenly;
   }
 
   /* SEARCH FORM */
@@ -445,21 +447,44 @@ input, textarea {
     /* cursor: default; */
   }
 
-  .radio-button {
-    width: 50%;
-    text-align: center;
-    float: right;
-  }
-
   .form-button {
     font-size: 30px;
   }
+
 }
 
-/* .hide-input-field {
-  display: none;
-} */
+@media screen and (min-width:960px) {
+  /* ==BOOK CONTAINER FEATURES== */
+  /* BOOKSHELF (HOME/INDEX) */
+  li {
+  width: 60%;
+  }
 
+  img {
+    width: 75%;
+  }
+
+  .detail-view {
+    width: 50%;
+  }
+
+  .detail-view img {
+    width: 50%;
+  }
+
+  .search-view-img {
+    width: 50%;
+  }
+
+  .details-page-form {
+    width: 50%;
+  }
+
+  .detail-view-button {
+    height: 40px;
+  }
+
+}
 
 
 
