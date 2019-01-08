@@ -34,10 +34,8 @@ app.put('/books/:id', updateBook);
 app.delete('/books/:id', deleteBook)
 
 function deleteBook(request, response) {
-  console.log (`deleting the book ${request.params.id}`);
   client.query(`DELETE FROM books WHERE id=$1`, [request.params.id])
-    .then(result => {
-      console.log(result);
+    .then( result => {
       response.redirect('/');
     })
     .catch( err => {
@@ -55,6 +53,7 @@ function visitBookUpdate(request, response){
 
       return bookShelfList()
         .then ( shelf => {
+          console.log('56', 'shelf at zero', shelf[0])
           response.render('pages/books/update', {selected_book:result.rows[0], bookshelfList:shelf});
         })
         .catch( err => {
@@ -71,13 +70,11 @@ function visitBookUpdate(request, response){
 
 function bookShelfList() {
   let bookshelfArray = [];
-  // return bookshelfArray;
   return client.query(`SELECT DISTINCT bookshelf FROM books`)
-    .then(result=> {
+    .then( result => {
       for (var i in result.rows){
         bookshelfArray.push(result.rows[i].bookshelf);
       }
-      console.log(bookshelfArray)
       return bookshelfArray;
     })
     .catch( err => {
@@ -87,13 +84,11 @@ function bookShelfList() {
 }
 
 function updateBook(request, response) {
-  console.log (`updating the book ${request.params.id}`);
-  const values = [request.body.title, request.body.isbn, request.body.image_url, request.body.description, request.body.bookshelf, request.body.author, request.params.id];
-
+  // console.log (`updating the book ${request.params.id}`);
+  const values = [request.body.title, request.body.isbn, request.body.image_url, request.body.description, request.body.bookshelf[1], request.body.author, request.params.id];
+  console.log(request.body.bookshelf[1])
   client.query(`UPDATE books SET title=$1, isbn=$2, image_url=$3, description=$4, bookshelf=$5, author=$6  WHERE id=$7`, values)
-    .then(result => {
-      console.log('hi were here')
-      console.log(result);
+    .then( result => {
       response.redirect(`/books/${request.params.id}`);
     })
     .catch( err => {
