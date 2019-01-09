@@ -13,9 +13,6 @@
   min-height: 1000px;
 }
 
-
-
-
 @media screen and (min-width:500px) {
   /* ==UNIVERSAL PAGE FEATURES== */
   /* HEADER & NAVIGATION */
@@ -23,8 +20,24 @@
     margin-top: 0px;
   }
 
+  /* ==BOOK CONTAINER FEATURES== */
+    /* SEARCH FORM */
+  #book-search {
+    font-size: 18px;
+  }
+
 }
 
 @media screen and (min-width:960px) {
+  .detail-view {
+    width: 50%;
+  }
 
+  .detail-view img {
+    width: 50%;
+  }
+
+  .search-view-img {
+    width: 50%;
+  }
 }
