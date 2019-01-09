@@ -1,0 +1,30 @@
+.flex-column{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#navTitle{
+  text-align: center;
+  margin-top: 30px;
+}
+
+.detail-view{
+  min-height: 1000px;
+}
+
+
+
+
+@media screen and (min-width:500px) {
+  /* ==UNIVERSAL PAGE FEATURES== */
+  /* HEADER & NAVIGATION */
+  #navTitle{
+    margin-top: 0px;
+  }
+
+}
+
+@media screen and (min-width:960px) {
+
+}
