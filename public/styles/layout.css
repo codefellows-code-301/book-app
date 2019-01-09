@@ -1,0 +1,43 @@
+.flex-column{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#navTitle{
+  text-align: center;
+  margin-top: 30px;
+}
+
+.detail-view{
+  min-height: 1000px;
+}
+
+@media screen and (min-width:500px) {
+  /* ==UNIVERSAL PAGE FEATURES== */
+  /* HEADER & NAVIGATION */
+  #navTitle{
+    margin-top: 0px;
+  }
+
+  /* ==BOOK CONTAINER FEATURES== */
+    /* SEARCH FORM */
+  #book-search {
+    font-size: 18px;
+  }
+
+}
+
+@media screen and (min-width:960px) {
+  .detail-view {
+    width: 50%;
+  }
+
+  .detail-view img {
+    width: 50%;
+  }
+
+  .search-view-img {
+    width: 50%;
+  }
+}
